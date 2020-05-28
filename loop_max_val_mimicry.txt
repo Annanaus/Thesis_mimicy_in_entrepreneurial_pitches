@@ -1,0 +1,16 @@
+select th1.pitch, th1.frame, th1.timestamp, th2.pitch, th1.AU06_r, max(th2.AU06_r) as max_AU06, th1.AU07_r, max(th2.AU07_r) as max_AU07, th1.AU12_r, max(th2.AU12_r) as max_AU12, th1.AU14_r, max(th2.AU14_r) as max_AU14 from thesis th1, thesis th2
+where th2.timestamp>=(th1.timestamp +0.48) and th2.timestamp<=(th1.timestamp +1)
+and th1.pitch = "Choos3Wisely_pitch" and th2.pitch="Choos3Wisely_judge1"
+and th2.pitch <> th1.pitch
+group by  th1.pitch, th1.frame, th1.timestamp, th2.pitch, th1.AU06_r, th1.AU07_r, th1.AU12_r, th1.AU14_r
+union all
+select th1.pitch, th1.frame, th1.timestamp, th2.pitch, th1.AU06_r, max(th2.AU06_r) as max_AU06, th1.AU07_r, max(th2.AU07_r) as max_AU07, th1.AU12_r, max(th2.AU12_r) as max_AU12, th1.AU14_r, max(th2.AU14_r) as max_AU14 from thesis th1, thesis th2
+where th2.timestamp>=(th1.timestamp +0.48) and th2.timestamp<=(th1.timestamp +1)
+and th1.pitch = "Choos3Wisely_pitch" and th2.pitch="Choos3Wisely_judge2"
+and th2.pitch <> th1.pitch
+group by  th1.pitch, th1.frame, th1.timestamp, th2.pitch, th1.AU06_r, th1.AU07_r, th1.AU12_r, th1.AU14_r
+UNION ALL select th1.pitch, th1.frame, th1.timestamp, th2.pitch, th1.AU06_r, max(th2.AU06_r) as max_AU06, th1.AU07_r, max(th2.AU07_r) as max_AU07, th1.AU12_r, max(th2.AU12_r) as max_AU12, th1.AU14_r, max(th2.AU14_r) as max_AU14 from thesis th1, thesis th2
+where th2.timestamp>=(th1.timestamp +0.48) and th2.timestamp<=(th1.timestamp +1)
+and th1.pitch = "Choos3Wisely_pitch" and th2.pitch="Choos3Wisely_judge3"
+and th2.pitch <> th1.pitch
+group by  th1.pitch, th1.frame, th1.timestamp, th2.pitch, th1.AU06_r, th1.AU07_r, th1.AU12_r, th1.AU14_r;
